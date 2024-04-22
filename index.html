@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>తప్పొప్పులు — మన తప్పులు తెలుసుకుందాం!</title>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+
+		<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+		<link rel="manifest" href="./manifest.json">
+		<link rel="mask-icon" href="./safari-pinned-tab.svg" color="#42be63">
+		<meta name="apple-mobile-web-app-title" content="తప్పొప్పులు">
+		<meta name="application-name" content="తప్పొప్పులు">
+		<meta name="theme-color" content="#ffffff">
+		<meta property="og:title" content="తప్పొప్పులు">
+		<meta property="og:image" content="https://tappoppulu.irusu.in/apple-touch-icon.png">
+		<meta property="og:description" content="తెలుగులో మనం తరచూ వ్రాసే తప్పులను సరిదిద్దుకోడానకి చిన్ని ఆట">
+
+		<style type="text/css">
+		
+/* telugu */
+@font-face {
+  font-family: 'Suranna';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Suranna'), url(https://fonts.gstatic.com/s/suranna/v5/gokuH6ztGkFjWe58hA9TTlKm.woff2) format('woff2');
+	/*   unicode-range: U+0951-0952, U+0964-0965, U+0C00-0C7F, U+1CDA, U+200C-200D, U+25CC; */
+}
+
+html {
+	font: 16px 'Segoe UI', 'Roboto', 'Suranna', sans-serif;
+	background: #666;
+	height: 100%;
+}
+body {
+	margin: 0 auto;
+	max-width: 900px;
+	background: #fff;
+	height: 100%;
+	box-shadow: 0px 0px 16px 4px #333;
+}
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	user-select: none;
+}
+
+@keyframes v_blink {
+
+	from {
+		background: #fee08b;
+	}
+	
+	to {
+		background: #d9ef8b;
+	}
+
+}
+li {
+	position: relative;
+	padding: 2.2rem .5rem;
+	margin: 0 0 2px 0;
+	font-size: 3rem;
+	line-height: 1;
+	border-top: 1px solid #ccc;
+	text-align: center;
+	cursor: pointer;
+
+	user-select: none;
+}
+li:last-child {
+	border-bottom: 1px solid #ccc;
+}
+
+li:hover:not(.tappu), li:hover:not(.oppu) {
+	animation: .3s ease-in-out 0s infinite alternate v_blink;
+}
+li[class~=oppu]:hover, li[class~=tappu]:hover {
+	animation: none;
+}
+li:active {
+	background: #ff9;
+}
+li.oppu {
+	background: #66bd63;
+}
+li.tappu {
+	background: #f46d43;
+}
+
+li.selected:after {
+	content: '⊕';
+	position: absolute;
+	width: 3.2rem;
+	height: 3.2rem;
+	right: 1rem;
+	top: 50%;
+	transform: translate(0, -50%);
+	display: block;
+	background: #333;
+	color: #fff;
+	border-radius: 100%;
+	line-height: 1;
+}
+
+li.selected.tappu:after {
+	content: '✘';
+}
+
+li.selected.oppu:after {
+	content: '✔';
+}
+
+p {
+	position: relative;
+	text-align: center;
+	font-size: 1.4rem;
+	color: #333;
+	margin: 0;
+	line-height: 1;
+	padding: .8rem 0;
+}
+
+button {
+	display: block;
+	background: #2166ac;
+	border-radius: 4px;
+	color: #fff;
+	cursor: pointer;
+	border: none;
+	font-size: 1.8rem;
+	line-height: 1;
+	padding: .3rem .8rem .5rem;
+}
+
+#next {
+	display: none;
+	position: absolute;
+	right: .5rem;
+	top: 50%;
+	transform: translate(0, -50%);
+}
+
+#score {
+	font-family: sans-serif;
+	font-size: .8rem;
+	-display: block;
+	line-height: 1;
+	position: absolute;
+	left: 1rem;
+	top: 50%;
+	transform: translate(0, -50%);
+}
+
+#score strong {
+	color: #66bd63;
+	font-size: 1.2rem;
+	padding-right: 1px;
+}
+
+#score * {vertical-align: middle;}
+
+#scorecard {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #fff;
+	display: none;
+
+	text-align: center;
+}
+
+#scorecard p {
+	font-weight: bold;
+}
+
+#scorecard button {
+	margin-top: 6px;
+	font-family: inherit;
+	display: inline;
+}
+
+
+svg {
+	display: block;
+	margin: auto;
+}
+
+svg text {
+	font-family: Suranna, serif;
+}
+		</style>
+				<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+	
+	</head>
+	<body>
+		<main>
+			<p>ఏది ఒప్పు? <button id="next">➜</button><span id="score"><strong>0</strong><span> ∕0</span></span></p>
+			<ul></ul>
+		</main>
+		<div id="scorecard"></div>
+		<script src="library/d3.v7.min.js"></script>
+		<script src="app.js"></script>
+
+
+	</body>
+</html>
